@@ -6,9 +6,14 @@ public class BasicProjectile : MonoBehaviour
 {
     public float damage;
     public List<string> damageTypes = new List<string>();
+    [SerializeField] private bool reportHitData;
+    [SerializeField] GameObject particleHit;
     //[SerializeField] string[] damagetype = new string[];
 
     private void OnTriggerEnter2D(Collider2D other){
+        if(reportHitData){
+            Debug.Log("Hit: " +other.gameObject.name);
+        }
         var objTags = other.gameObject.GetComponent<ObjectTags>();
         if(objTags != null){
             if(objTags.tags.ToString().Contains("Player") || objTags.tags.ToString().Contains("System")){
@@ -25,6 +30,7 @@ public class BasicProjectile : MonoBehaviour
         }
     }
     private void HitSomething(){
+        Instantiate(particleHit, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }

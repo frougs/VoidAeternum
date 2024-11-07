@@ -8,7 +8,22 @@ public class DestructableObject : MonoBehaviour, IDamagable
 {
     public DamageTypes.DamageType vulnerabilities;
     public DamageTypes.DamageType immunities;
-    [SerializeField] float health;
+    public float currentHealth;
+    public float maxHealth;
+    [SerializeField] [Range(-1, -0.1f)] float minFallSpeed;
+    [SerializeField] [Range(-1,-0.1f)] float maxFallSpeed;
+    private float fallSpeed;
+    public GameObject destroyParticles;
+    public CameraShake cShaker;
+    public float shakeIntensity;
+    public float shakeDuration;
+
+    private void Start(){
+        currentHealth = maxHealth;
+        fallSpeed = Random.Range(minFallSpeed, maxFallSpeed);
+        this.GetComponent<ConstantForce2D>().force = new Vector2(0, fallSpeed);
+        cShaker = FindObjectOfType<CameraShake>();
+    }
 
     public void Damaged(float dmg, List<string> damageTypes){
         bool damagedOnce = false;
@@ -16,7 +31,7 @@ public class DestructableObject : MonoBehaviour, IDamagable
             if(!immunities.ToString().Contains(type.ToString()) && !damagedOnce){
                 //Debug.Log("This will be damaged for: " +dmg.ToString());
                 damagedOnce = true;
-                health -= dmg;
+                currentHealth -= dmg;
             }
             else{
                 Debug.Log("This is immune to this damage type: " +type.ToString());
@@ -24,11 +39,14 @@ public class DestructableObject : MonoBehaviour, IDamagable
         }
     }
     private void Update(){
-        if(health <= 0){
+        if(currentHealth <= 0){
             OnDestruction();
         }
     }
     public virtual void OnDestruction(){
+    }
+    private void FixedUpdate(){
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, fallSpeed);
     }
 
 }

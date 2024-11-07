@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
         move = _pInput.actions["Move"];
         
         rb = GetComponent<Rigidbody2D>();
-        //rb.useGravity = false; 
-        //rb.drag = 1f; 
     }
 
     private void FixedUpdate()
