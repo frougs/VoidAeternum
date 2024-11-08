@@ -34,7 +34,7 @@ public class DestructableObject : MonoBehaviour, IDamagable
                 currentHealth -= dmg;
             }
             else{
-                Debug.Log("This is immune to this damage type: " +type.ToString());
+                //Debug.Log("This is immune to this damage type: " +type.ToString());
             }
         }
     }

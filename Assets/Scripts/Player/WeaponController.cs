@@ -26,6 +26,12 @@ public class WeaponController : MonoBehaviour
                 ErrorShot();
             }
         }
+        else{
+            var leftWeapon = leftWing.GetComponentInChildren<IReleasable>();
+            if(leftWeapon != null){
+                leftWeapon.ShotReleased();
+            }
+        }
         if(rightAttack.IsPressed()){
             var rightWeapon = rightWing.GetComponentInChildren<IShootable>();
             if (rightWeapon != null){
@@ -33,6 +39,12 @@ public class WeaponController : MonoBehaviour
             }
             else{
                 ErrorShot();
+            }
+        }
+        else{
+            var rightWeapon = rightWing.GetComponentInChildren<IReleasable>();
+            if (rightWeapon != null){
+                rightWeapon.ShotReleased();
             }
         }
     }
