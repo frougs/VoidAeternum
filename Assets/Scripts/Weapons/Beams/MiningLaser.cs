@@ -22,7 +22,14 @@ public class MiningLaser : BaseWeapon, IReleasable
             obj.hitParticles = hitParticles;
             obj.range = range;
             obj.IgnoreLayer = IgnoreLayer;
+            obj.hitShake = hitShake;
+            obj.shakeAmount = shakeAmount;
+            obj.shakeDuration = shakeDuration;
             line = obj.GetComponent<LineRenderer>();
+        }
+        if(cam == null){
+            cam = FindObjectOfType<CameraShake>();
+            obj.cam = cam;
         }
     }
     public override void Shot(){

@@ -10,6 +10,8 @@ public class WeaponController : MonoBehaviour
     [HideInInspector] public InputAction rightAttack;
     [SerializeField] GameObject leftWing;
     [SerializeField] GameObject rightWing;
+    public GameObject leftWeaponContainer;
+    public GameObject rightWeaponContainer;
 
     private void Start(){
         _pInput = GetComponent<PlayerInput>();
@@ -18,7 +20,7 @@ public class WeaponController : MonoBehaviour
     }
     private void Update(){
         if(leftAttack.IsPressed()){
-            var leftWeapon = leftWing.GetComponentInChildren<IShootable>();
+            var leftWeapon = leftWeaponContainer.GetComponentInChildren<IShootable>();
             if(leftWeapon != null){
                 leftWeapon.Shot();
             }
@@ -27,13 +29,13 @@ public class WeaponController : MonoBehaviour
             }
         }
         else{
-            var leftWeapon = leftWing.GetComponentInChildren<IReleasable>();
+            var leftWeapon = leftWeaponContainer.GetComponentInChildren<IReleasable>();
             if(leftWeapon != null){
                 leftWeapon.ShotReleased();
             }
         }
         if(rightAttack.IsPressed()){
-            var rightWeapon = rightWing.GetComponentInChildren<IShootable>();
+            var rightWeapon = rightWeaponContainer.GetComponentInChildren<IShootable>();
             if (rightWeapon != null){
                 rightWeapon.Shot();
             }
@@ -42,7 +44,7 @@ public class WeaponController : MonoBehaviour
             }
         }
         else{
-            var rightWeapon = rightWing.GetComponentInChildren<IReleasable>();
+            var rightWeapon = rightWeaponContainer.GetComponentInChildren<IReleasable>();
             if (rightWeapon != null){
                 rightWeapon.ShotReleased();
             }

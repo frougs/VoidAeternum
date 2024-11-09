@@ -25,6 +25,17 @@ public class StarterWeapon : BaseWeapon
             if(projRB != null){
                 projRB.AddForce(this.transform.up * projectileSpeed, ForceMode2D.Impulse);
             }
+            if(launchedProj.GetComponent<BasicProjectile>() != null){
+                launchedProj.GetComponent<BasicProjectile>().cam = cam;
+                launchedProj.GetComponent<BasicProjectile>().hitShake = hitShake;
+                launchedProj.GetComponent<BasicProjectile>().shakeAmount = shakeAmount;
+                launchedProj.GetComponent<BasicProjectile>().shakeDuration = shakeDuration;
+            }
+        }
+    }
+    private void Update(){
+        if(cam == null){
+            cam = FindObjectOfType<CameraShake>();
         }
     }
 }

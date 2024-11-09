@@ -11,6 +11,10 @@ public class LaserCollision : MonoBehaviour
     public List<string> damageTypes = new List<string>();
     public GameObject hitParticles;
     private LineRenderer line;
+    public bool hitShake;
+    public float shakeAmount;
+    public float shakeDuration;
+    [HideInInspector] public CameraShake cam;
 
     private void Start()
     {
@@ -32,7 +36,11 @@ public class LaserCollision : MonoBehaviour
             IDamagable damagable = hitData.transform.gameObject.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                FindObjectOfType<CameraShake>().Shake(0.35f, 0.08f);
+                //FindObjectOfType<CameraShake>().Shake(0.35f, 0.08f);
+                if(hitShake){
+                    cam.Shake(shakeAmount, shakeDuration);
+                }
+                
                 damagable.Damaged(damage, damageTypes);
             }
 

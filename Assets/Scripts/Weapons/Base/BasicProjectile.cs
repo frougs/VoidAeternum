@@ -8,6 +8,10 @@ public class BasicProjectile : MonoBehaviour
     public List<string> damageTypes = new List<string>();
     [SerializeField] private bool reportHitData;
     [SerializeField] GameObject particleHit;
+    public bool hitShake;
+    public float shakeAmount;
+    public float shakeDuration;
+    [HideInInspector] public CameraShake cam;
     //[SerializeField] string[] damagetype = new string[];
 
     private void OnTriggerEnter2D(Collider2D other){
@@ -22,6 +26,9 @@ public class BasicProjectile : MonoBehaviour
         }
         var damagable = other.gameObject.GetComponent<IDamagable>();
         if(damagable != null){
+            if(hitShake){
+                cam.Shake(shakeAmount, shakeDuration);
+            }
             damagable.Damaged(damage, damageTypes);
             HitSomething();
         }

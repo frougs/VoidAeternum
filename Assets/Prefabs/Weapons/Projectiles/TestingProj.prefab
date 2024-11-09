@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6780291, y: 0.21216753, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.39, z: 1}
+  m_LocalScale: {x: 0.245875, y: 0.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c3366381ae4d734a93fe507c2244689, type: 3}
   m_Color: {r: 0.990566, g: 0.33999673, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,6 +144,10 @@ MonoBehaviour:
   damageTypes: []
   reportHitData: 0
   particleHit: {fileID: 2999475111708979529, guid: 6cc6c3696ee6481408d1a87b434b32d3, type: 3}
+  hitShake: 0
+  shakeAmount: 0
+  shakeDuration: 0
+  cam: {fileID: 0}
 --- !u!61 &6273228484678413048
 BoxCollider2D:
   m_ObjectHideFlags: 0
