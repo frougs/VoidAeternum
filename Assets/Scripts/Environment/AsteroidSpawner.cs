@@ -33,7 +33,8 @@ public class AsteroidSpawner : MonoBehaviour
     public void ResetAsteroid(GameObject asteroid){
         asteroidOBJ.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         var asteroidScript = asteroid.GetComponent<Asteroid>();
-        asteroidScript.currentHealth = asteroidScript.maxHealth;
+        //asteroidScript.currentHealth = asteroidScript.maxHealth;
+        asteroidScript.ObjectSetup();
         var thisBounds = this.gameObject.GetComponent<BoxCollider2D>().bounds;
         asteroid.transform.position = new Vector2(Random.Range(thisBounds.min.x, thisBounds.max.x), Random.Range(thisBounds.min.y, thisBounds.max.y));
     }

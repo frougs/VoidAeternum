@@ -100,11 +100,13 @@ MonoBehaviour:
   canShoot: 1
   firerate: 0.2
   damage: 20
+  range: 1
   hitShake: 0
   shakeAmount: 0.5
   shakeDuration: 0.08
-  damageType: 0
+  damageType: 1
   cam: {fileID: 0}
+  playerStats: {fileID: 0}
   projectile: {fileID: 1405886738559877384, guid: 17d5bdc6945b7144982c3782f3d2abcb, type: 3}
   projectileSpeed: 10
   projSpawnPoint: {fileID: 3599469645980845513}

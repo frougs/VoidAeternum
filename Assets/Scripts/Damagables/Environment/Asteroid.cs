@@ -1,17 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Asteroid : DestructableObject
 {
     [HideInInspector] public AsteroidSpawner spawner;
-    public override void OnDestruction(){
+    public override void OnDestruction()
+    {
+        base.OnDestruction();
         //spawner.totalCurrentlySpawned -= 1;
-        if(destroyParticles != null){
+        if (destroyParticles != null)
+        {
             Instantiate(destroyParticles, this.transform.position, Quaternion.identity);
         }
-        cShaker.Shake(shakeIntensity, shakeDuration);
-        spawner.ResetAsteroid(this.gameObject);
-        //Destroy(this.gameObject);
+        try
+        {
+            cShaker.Shake(shakeIntensity, shakeDuration);
+            spawner.ResetAsteroid(this.gameObject);
+        }
+        catch (Exception e)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.gameObject.GetComponent<ObjectTags>() != null)
+        {
+            if (collision.transform.gameObject.GetComponent<ObjectTags>().tags.ToString().Contains("Player"))
+            {
+                OnDestruction();
+                //Add player damage here l8r based on asteroid size multiplier :}
+            }
+        }
     }
 }

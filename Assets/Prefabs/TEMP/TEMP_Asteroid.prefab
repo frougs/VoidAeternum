@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3011966802279249221}
   - component: {fileID: 7444613254215065766}
   - component: {fileID: 4199704865953545542}
+  - component: {fileID: 785889880337258782}
   m_Layer: 7
   m_Name: TEMP_Asteroid
   m_TagString: Untagged
@@ -118,7 +119,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.04371103, y: 0}
@@ -137,15 +138,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vulnerabilities: 5
-  immunities: 2
   currentHealth: 0
   maxHealth: 100
-  minFallSpeed: -0.3
-  maxFallSpeed: -0.5
+  minFallSpeed: -0.4
+  maxFallSpeed: -1
   destroyParticles: {fileID: 4825442697451535824, guid: c86409057515afe4b9c15c1fd9c34afb, type: 3}
   cShaker: {fileID: 0}
   shakeIntensity: 5
   shakeDuration: 0.25
+  objectDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 785889880337258782}
+        m_TargetAssemblyTypeName: ResourceSpawner, Assembly-CSharp
+        m_MethodName: SpawnItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomizeSizeAndHP: 1
+  minSizeMultiplier: 0.5
+  maxSizeMultiplier: 2
   spawner: {fileID: 0}
 --- !u!114 &-3011966802279249221
 MonoBehaviour:
@@ -199,3 +217,48 @@ ConstantForce2D:
   m_Force: {x: 0, y: -0.2}
   m_RelativeForce: {x: 0, y: 0}
   m_Torque: 0
+--- !u!114 &785889880337258782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7627447437370099433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d066b4ea0ade42d428e891283df146b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableItems:
+  - item: {fileID: 0}
+    spawnChance: 33.33
+    minSpawnAmount: 0
+    maxSpawnAmount: 0
+  - item: {fileID: 7439947079729321037, guid: f668a15c841ad9046a488f1347cb6767, type: 3}
+    spawnChance: 36.67
+    minSpawnAmount: 2
+    maxSpawnAmount: 4
+  - item: {fileID: 6473052163792060841, guid: 1ea7160279e54e74e9ff377d7cfec937, type: 3}
+    spawnChance: 10
+    minSpawnAmount: 1
+    maxSpawnAmount: 3
+  - item: {fileID: 5991280400915588029, guid: e4ccfe4376329374ca480736ae948bcb, type: 3}
+    spawnChance: 8
+    minSpawnAmount: 1
+    maxSpawnAmount: 3
+  - item: {fileID: 3789135810282238494, guid: 41d0d20ba5bb5c44c8a1b7ef8c5d4f28, type: 3}
+    spawnChance: 5.33
+    minSpawnAmount: 1
+    maxSpawnAmount: 3
+  - item: {fileID: 6860621419392977613, guid: f27cddd20d4c16046be08540062f3f1e, type: 3}
+    spawnChance: 3.33
+    minSpawnAmount: 1
+    maxSpawnAmount: 3
+  - item: {fileID: 98423190362337978, guid: 54b8fbd8c0408c2449a5c11f6cb5d2f0, type: 3}
+    spawnChance: 2
+    minSpawnAmount: 1
+    maxSpawnAmount: 2
+  - item: {fileID: 4249463397480400157, guid: a8269ac6b653bb04f95ebd28fa5f05d0, type: 3}
+    spawnChance: 1.33
+    minSpawnAmount: 1
+    maxSpawnAmount: 2

@@ -11,33 +11,46 @@ public class BasicProjectile : MonoBehaviour
     public bool hitShake;
     public float shakeAmount;
     public float shakeDuration;
+    public float lifeTime;
     [HideInInspector] public CameraShake cam;
     //[SerializeField] string[] damagetype = new string[];
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if(reportHitData){
-            Debug.Log("Hit: " +other.gameObject.name);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (reportHitData)
+        {
+            Debug.Log("Hit: " + other.gameObject.name);
         }
         var objTags = other.gameObject.GetComponent<ObjectTags>();
-        if(objTags != null){
-            if(objTags.tags.ToString().Contains("Player") || objTags.tags.ToString().Contains("System")){
+        if (objTags != null)
+        {
+            if (objTags.tags.ToString().Contains("Player") || objTags.tags.ToString().Contains("System") || objTags.tags.ToString().Contains("Resource"))
+            {
                 return;
             }
         }
         var damagable = other.gameObject.GetComponent<IDamagable>();
-        if(damagable != null){
-            if(hitShake){
+        if (damagable != null)
+        {
+            if (hitShake)
+            {
                 cam.Shake(shakeAmount, shakeDuration);
             }
             damagable.Damaged(damage, damageTypes);
             HitSomething();
         }
-        else{
+        else
+        {
             HitSomething();
         }
     }
-    private void HitSomething(){
+    private void HitSomething()
+    {
         Instantiate(particleHit, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
+    }
+    private void Start()
+    {
+        Destroy(this.gameObject, lifeTime);
     }
 }

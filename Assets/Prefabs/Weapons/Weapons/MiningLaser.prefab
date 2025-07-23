@@ -217,18 +217,20 @@ MonoBehaviour:
   canShoot: 1
   firerate: 0.05
   damage: 10
+  range: 5
   hitShake: 1
   shakeAmount: 0.35
   shakeDuration: 0.08
   damageType: 3
+  damageTypesList: []
   cam: {fileID: 0}
+  playerStats: {fileID: 0}
   laser: {fileID: 7686156004754271533}
   laserOrigin: {fileID: 2340073911183685447}
   hitParticles: {fileID: 2999475111708979529, guid: 6cc6c3696ee6481408d1a87b434b32d3, type: 3}
-  range: 5
   IgnoreLayer:
     serializedVersion: 2
-    m_Bits: 12
+    m_Bits: 268
 --- !u!1 &7686156004754271533
 GameObject:
   m_ObjectHideFlags: 0

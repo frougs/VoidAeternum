@@ -8,37 +8,54 @@ public class MiningLaser : BaseWeapon, IReleasable
     [SerializeField] GameObject laser;
     [SerializeField] GameObject laserOrigin;
     [SerializeField] GameObject hitParticles;
-    [SerializeField] float range;
     [SerializeField] LayerMask IgnoreLayer;
     private LaserCollision obj;
     private LineRenderer line;
 
-    private void Update(){
-        if(obj == null){
+    public override void Update()
+    {
+        base.Update();
+        if (obj == null)
+        {
             obj = laser.GetComponent<LaserCollision>();
-            obj.damage = damage;
-            obj.firerate = firerate;
+            obj.damage = damage * playerStats.playerDamageMulti;
+            obj.firerate = firerate * playerStats.playerFireRateMultiplier;
             obj.damageTypes.Add(damageType.ToString());
+            obj.damageTypes.Add(playerStats.playerGlobalDamageTypes.ToString());
             obj.hitParticles = hitParticles;
-            obj.range = range;
+            obj.range = range * playerStats.playerWeaponRangeMultiplier;
             obj.IgnoreLayer = IgnoreLayer;
             obj.hitShake = hitShake;
             obj.shakeAmount = shakeAmount;
             obj.shakeDuration = shakeDuration;
             line = obj.GetComponent<LineRenderer>();
-        }
-        if(cam == null){
-            cam = FindObjectOfType<CameraShake>();
             obj.cam = cam;
         }
     }
-    public override void Shot(){
-        if(canShoot){
+    public override void Shot()
+    {
+        if (canShoot)
+        {
+            RefreshStats();
             obj.ShootLaser(laserOrigin);
             StartCoroutine(ShotDelay());
         }
     }
-    public void ShotReleased(){
-        line.positionCount = 0;
+    public void ShotReleased()
+    {
+        if (line != null)
+        {
+            line.positionCount = 0;
+        }
+    }
+
+    public void RefreshStats()
+    {
+        obj.damage = damage * playerStats.playerDamageMulti;
+        obj.firerate = firerate * playerStats.playerFireRateMultiplier;
+        obj.damageTypes.Add(damageType.ToString());
+        obj.damageTypes.Add(playerStats.playerGlobalDamageTypes.ToString());
+        obj.range = range * playerStats.playerWeaponRangeMultiplier;
+        obj.IgnoreLayer = IgnoreLayer;
     }
 }
