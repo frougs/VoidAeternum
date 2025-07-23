@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public PlayerInput _pInput;
     [HideInInspector] public InputAction look;
     [HideInInspector] public InputAction move;
-
-    public float thrust = 10f; 
-    public float maxSpeed = 20f; 
+    [SerializeField] PlayerStats playerstats;
+    //public float thrust = 10f; 
+    //public float maxSpeed = 20f; 
 
     private Rigidbody2D rb;
 
@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
         move = _pInput.actions["Move"];
         
         rb = GetComponent<Rigidbody2D>();
-        //rb.useGravity = false; 
-        //rb.drag = 1f; 
     }
 
     private void FixedUpdate()
@@ -34,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 mDirection = new Vector3(inputDirection.x, inputDirection.y).normalized;
 
-            rb.AddForce(mDirection * thrust);
+            rb.AddForce(mDirection * playerstats.playerThrust);
 
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, playerstats.playerMoveSpeed);
         }
     }
 }
