@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class PlayerStats : MonoBehaviour
 {
     public float playerMaxHealth;
+    public float playerCurrentHealth;
     public float playerMoveSpeed;
     public float playerThrust;
+    public float maxFuel;
     public float playerDamageMulti;
     public float playerDamageReduction;
     public int playerLives;
@@ -16,10 +19,13 @@ public class PlayerStats : MonoBehaviour
     public float playerWeaponRangeMultiplier;
     public DamageTypes.DamageType playerGlobalDamageTypes;
     public List<string> globalPlayerDamageTypesList = new List<string>();
+    public UnityEvent<float, float, float> updatedHealth;
+    public UnityEvent<float, float> updatedFuel;
 
     public void Start()
     {
         UpdatePlayerGlobalDamageTypes();
+        FullHeal();
 
     }
 
@@ -34,5 +40,23 @@ public class PlayerStats : MonoBehaviour
                 globalPlayerDamageTypesList.Add(type.ToString());
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        var savedCurHealth = playerCurrentHealth;
+        var adjustedDamage = damage - playerDamageReduction;
+        playerCurrentHealth -= adjustedDamage;
+        updatedHealth.Invoke(savedCurHealth, playerCurrentHealth, playerMaxHealth);
+    } 
+
+    public void FullHeal()
+    {
+        playerCurrentHealth = playerMaxHealth;
+        updatedHealth.Invoke(playerCurrentHealth, playerMaxHealth, playerMaxHealth);
+    }
+    public void UpdateFuel(float currentFuel)
+    {
+        updatedFuel.Invoke(currentFuel, maxFuel);
     }
 }

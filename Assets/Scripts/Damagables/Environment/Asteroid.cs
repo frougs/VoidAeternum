@@ -6,6 +6,8 @@ using System;
 public class Asteroid : DestructableObject
 {
     [HideInInspector] public AsteroidSpawner spawner;
+    [SerializeField] private float baseCollisionDamage;
+    private GameObject player;
     public override void OnDestruction()
     {
         base.OnDestruction();
@@ -30,7 +32,9 @@ public class Asteroid : DestructableObject
         {
             if (collision.transform.gameObject.GetComponent<ObjectTags>().tags.ToString().Contains("Player"))
             {
+                player = collision.transform.gameObject;
                 OnDestruction();
+                player.GetComponent<PlayerStats>().TakeDamage(baseCollisionDamage * sizeAndHPMultiplier);
                 //Add player damage here l8r based on asteroid size multiplier :}
             }
         }

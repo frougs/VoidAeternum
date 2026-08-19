@@ -26,7 +26,7 @@ public class ShipVisualUpdater : MonoBehaviour
     {
         lWing = newLWing;
         shipVisuals["lWing"] = lWing;
-        ReplaceShipPart(newLWing, )
+        ReplaceShipPart(newLWing, lWing);
         updatedShipVisuals.Invoke();
     }
 

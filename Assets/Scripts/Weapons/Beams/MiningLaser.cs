@@ -12,6 +12,7 @@ public class MiningLaser : BaseWeapon, IReleasable
     private LaserCollision obj;
     private LineRenderer line;
 
+    private List<string> oldDamageTypes = new List<string>();
     public override void Update()
     {
         base.Update();
@@ -36,7 +37,7 @@ public class MiningLaser : BaseWeapon, IReleasable
     {
         if (canShoot)
         {
-            RefreshStats();
+            //RefreshStats();
             obj.ShootLaser(laserOrigin);
             StartCoroutine(ShotDelay());
         }
@@ -53,8 +54,10 @@ public class MiningLaser : BaseWeapon, IReleasable
     {
         obj.damage = damage * playerStats.playerDamageMulti;
         obj.firerate = firerate * playerStats.playerFireRateMultiplier;
+        obj.damageTypes.Clear();
         obj.damageTypes.Add(damageType.ToString());
         obj.damageTypes.Add(playerStats.playerGlobalDamageTypes.ToString());
+        oldDamageTypes = obj.damageTypes;
         obj.range = range * playerStats.playerWeaponRangeMultiplier;
         obj.IgnoreLayer = IgnoreLayer;
     }

@@ -12,10 +12,12 @@ public class CameraShake : MonoBehaviour
         cam = this.GetComponent<CinemachineVirtualCamera>();
     }
     public void Shake(float intensity, float duration){
-        if(shaking != null){
-            StopCoroutine(shaking);
+        if(enableCameraShake){
+            if(shaking != null){
+                StopCoroutine(shaking);
+            }
+            shaking = StartCoroutine(ShakingCamera(intensity, duration));
         }
-        shaking = StartCoroutine(ShakingCamera(intensity, duration));
     }
     private IEnumerator ShakingCamera(float intensity, float duration){
         float elapsedTime = 0f;

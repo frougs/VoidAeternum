@@ -7,6 +7,7 @@ public class PickupBase : MonoBehaviour
 {
     [SerializeField][Range(-5, 5f)] float minForce;
     [SerializeField][Range(-5, 5f)] float maxForce;
+    [SerializeField] GameObject pickupParticles;
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -35,6 +36,9 @@ public class PickupBase : MonoBehaviour
     }
     public virtual void PickupBehavior()
     {
+        if(pickupParticles != null){
+            Instantiate(pickupParticles, this.transform.position, Quaternion.identity);
+        }
         Destroy(this.gameObject);
     }
 }

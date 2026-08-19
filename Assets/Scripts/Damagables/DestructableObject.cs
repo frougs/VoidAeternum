@@ -21,7 +21,7 @@ public class DestructableObject : MonoBehaviour, IDamagable
     [SerializeField] private bool randomizeSizeAndHP;
     [SerializeField] private float minSizeMultiplier;
     [SerializeField] private float maxSizeMultiplier;
-    private float sizeAndHPMultiplier;
+    [HideInInspector] public float sizeAndHPMultiplier;
 
     private void Start()
     {
