@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
             rb.AddForce(mDirection * playerstats.playerThrust);
 
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, playerstats.playerMoveSpeed);
+            rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, playerstats.playerMoveSpeed);
         }
     }
 }

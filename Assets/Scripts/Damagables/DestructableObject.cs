@@ -63,7 +63,7 @@ public class DestructableObject : MonoBehaviour, IDamagable
     }
     private void FixedUpdate()
     {
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, fallSpeed);
+        this.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, fallSpeed);
     }
     public virtual void ObjectSetup()
     {

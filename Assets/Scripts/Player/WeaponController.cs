@@ -8,8 +8,6 @@ public class WeaponController : MonoBehaviour
     [HideInInspector] public PlayerInput _pInput;
     [HideInInspector] public InputAction leftAttack;
     [HideInInspector] public InputAction rightAttack;
-    [SerializeField] GameObject leftWing;
-    [SerializeField] GameObject rightWing;
     public GameObject leftWeaponContainer;
     public GameObject rightWeaponContainer;
 
@@ -20,33 +18,50 @@ public class WeaponController : MonoBehaviour
     }
     private void Update(){
         if(leftAttack.IsPressed()){
-            var leftWeapon = leftWeaponContainer.GetComponentInChildren<IShootable>();
+            var leftWeapon = leftWeaponContainer.GetComponentsInChildren<IShootable>();
             if(leftWeapon != null){
-                leftWeapon.Shot();
+                foreach(IShootable weapon in leftWeapon)
+                {
+                    //leftWeapon.Shot();
+                    weapon.Shot();
+                }
+                
             }
             else{
                 ErrorShot();
             }
         }
         else{
-            var leftWeapon = leftWeaponContainer.GetComponentInChildren<IReleasable>();
+            var leftWeapon = leftWeaponContainer.GetComponentsInChildren<IReleasable>();
             if(leftWeapon != null){
-                leftWeapon.ShotReleased();
+                foreach(IReleasable weapon in leftWeapon)
+                {
+                    weapon.ShotReleased();
+                }
+                //leftWeapon.ShotReleased();
             }
         }
         if(rightAttack.IsPressed()){
-            var rightWeapon = rightWeaponContainer.GetComponentInChildren<IShootable>();
+            var rightWeapon = rightWeaponContainer.GetComponentsInChildren<IShootable>();
             if (rightWeapon != null){
-                rightWeapon.Shot();
+                foreach(IShootable weapon in rightWeapon)
+                {
+                    weapon.Shot();
+                }
+               // rightWeapon.Shot();
             }
             else{
                 ErrorShot();
             }
         }
         else{
-            var rightWeapon = rightWeaponContainer.GetComponentInChildren<IReleasable>();
+            var rightWeapon = rightWeaponContainer.GetComponentsInChildren<IReleasable>();
             if (rightWeapon != null){
-                rightWeapon.ShotReleased();
+                foreach(IReleasable weapon in rightWeapon)
+                {
+                    weapon.ShotReleased();
+                }
+                //rightWeapon.ShotReleased();
             }
         }
     }

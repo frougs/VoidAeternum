@@ -31,7 +31,7 @@ public class AsteroidSpawner : MonoBehaviour
         StartCoroutine(SpawnAsteroid());
     }
     public void ResetAsteroid(GameObject asteroid){
-        asteroidOBJ.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        asteroidOBJ.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         var asteroidScript = asteroid.GetComponent<Asteroid>();
         //asteroidScript.currentHealth = asteroidScript.maxHealth;
         asteroidScript.ObjectSetup();
