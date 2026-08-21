@@ -8,6 +8,7 @@ public class Asteroid : DestructableObject
     [HideInInspector] public AsteroidSpawner spawner;
     [SerializeField] private float baseCollisionDamage;
     private GameObject player;
+    
     public override void OnDestruction()
     {
         base.OnDestruction();

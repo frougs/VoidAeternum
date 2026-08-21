@@ -211,7 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ece235d0b0ff4f4e9026d50c14225b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objID: ore_iron
+  isPooled: 0
   minForce: -5
   maxForce: 5
   pickupParticles: {fileID: 1949656326705013818, guid: f25a34e6ae5b81c4691f1987d428916c, type: 3}
+  canDespawn: 1
+  despawnTime: 3
+  delayBeforeDisappear: 5
   oreName: iron

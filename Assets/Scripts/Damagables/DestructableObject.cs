@@ -22,6 +22,10 @@ public class DestructableObject : MonoBehaviour, IDamagable
     [SerializeField] private float minSizeMultiplier;
     [SerializeField] private float maxSizeMultiplier;
     [HideInInspector] public float sizeAndHPMultiplier;
+    [SerializeField] bool dropExp;
+    [SerializeField] EXPSpawner xpSpawner;
+    [SerializeField] int minExp;
+    [SerializeField] int maxExp;
 
     private void Start()
     {
@@ -59,6 +63,10 @@ public class DestructableObject : MonoBehaviour, IDamagable
     }
     public virtual void OnDestruction()
     {
+        if (dropExp && xpSpawner != null)
+        {
+            xpSpawner.SpawnEXP(Mathf.CeilToInt(minExp * sizeAndHPMultiplier), Mathf.CeilToInt(maxExp * sizeAndHPMultiplier));
+        }
         objectDestroyed?.Invoke();
     }
     private void FixedUpdate()

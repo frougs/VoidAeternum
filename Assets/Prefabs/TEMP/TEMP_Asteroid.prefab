@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7444613254215065766}
   - component: {fileID: 4199704865953545542}
   - component: {fileID: 785889880337258782}
+  - component: {fileID: -6253182062777709914}
   m_Layer: 7
   m_Name: TEMP_Asteroid
   m_TagString: Untagged
@@ -174,6 +175,10 @@ MonoBehaviour:
   minSizeMultiplier: 0.5
   maxSizeMultiplier: 2
   sizeAndHPMultiplier: 0
+  dropExp: 1
+  xpSpawner: {fileID: -6253182062777709914}
+  minExp: 2
+  maxExp: 10
   spawner: {fileID: 0}
   baseCollisionDamage: 5
 --- !u!114 &-3011966802279249221
@@ -202,7 +207,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1
+  m_Mass: 3.1832764
   m_LinearDamping: 0.05
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -273,3 +278,22 @@ MonoBehaviour:
     spawnChance: 1.33
     minSpawnAmount: 1
     maxSpawnAmount: 2
+  exp: {fileID: 6643460549636517841, guid: 2a3ae80a4aec51a42a2c40d48f5b9b67, type: 3}
+  minExp: 3
+  maxExp: 10
+--- !u!114 &-6253182062777709914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7627447437370099433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be66be76f1398643a9fddfaf15050af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EXPSpawner
+  useBaseValues: 0
+  baseMinExp: 0
+  baseMaxExp: 0
+  exp: {fileID: 6643460549636517841, guid: 2a3ae80a4aec51a42a2c40d48f5b9b67, type: 3}

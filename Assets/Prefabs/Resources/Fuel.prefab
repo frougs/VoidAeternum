@@ -198,9 +198,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b80bc94fe4366d44b2d77e1bed3efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objID: fuel
+  isPooled: 0
   minForce: -5
   maxForce: 5
   pickupParticles: {fileID: 1949656326705013818, guid: f25a34e6ae5b81c4691f1987d428916c, type: 3}
+  canDespawn: 1
+  despawnTime: 3
+  delayBeforeDisappear: 5
+  player: {fileID: 0}
+  fuelAmount: 5
 --- !u!114 &9194276427400693171
 MonoBehaviour:
   m_ObjectHideFlags: 0

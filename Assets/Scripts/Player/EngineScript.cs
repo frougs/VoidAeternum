@@ -19,7 +19,16 @@ public class EngineScript : MonoBehaviour
         currentFuel = currentFuel - ((1 * engineEfficiency) * Time.deltaTime);
         player.UpdateFuel(currentFuel);
     }
-
+    public void AddFuel(float amt)
+    {
+        Debug.Log("Adding Fuel: " +amt);
+        currentFuel += amt;
+        currentFuel = Mathf.Clamp(currentFuel, 0, player.maxFuel);
+    }
+    public void Refill()
+    {
+        AddFuel(player.maxFuel);
+    }
 
 
 }
