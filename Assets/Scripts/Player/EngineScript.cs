@@ -21,7 +21,6 @@ public class EngineScript : MonoBehaviour
     }
     public void AddFuel(float amt)
     {
-        Debug.Log("Adding Fuel: " +amt);
         currentFuel += amt;
         currentFuel = Mathf.Clamp(currentFuel, 0, player.maxFuel);
     }

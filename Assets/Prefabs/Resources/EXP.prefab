@@ -85,7 +85,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: caaf00cb457c3fa4b854e1f5d248c270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212b716be888b674ea6f8e47edbbeb55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 8
+  tags: 12
 --- !u!114 &1764041758183285317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,8 +216,11 @@ MonoBehaviour:
   minForce: -5
   maxForce: 5
   pickupParticles: {fileID: 949499553578289817, guid: a0561ee5f5581574cbd8c4af958cd135, type: 3}
-  canDespawn: 1
-  despawnTime: 3
+  canDespawn: 0
   delayBeforeDisappear: 2
+  shrinkDuration: 1
+  poofParticles: {fileID: 9016513514563187429, guid: 78e4df84dea46df40a9d0bc1e46f7ff6, type: 3}
+  player: {fileID: 0}
   attractSpeed: 8
   acceleration: 20
+  expValue: 1

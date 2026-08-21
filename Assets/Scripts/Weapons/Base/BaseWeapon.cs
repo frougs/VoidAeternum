@@ -4,8 +4,9 @@ using UnityEngine;
 using System;
 
 //[RequireComponent(typeof(DamageTypes))]
-public class BaseWeapon : MonoBehaviour, IShootable
+public class BaseWeapon : ObjectID, IShootable
 {
+    public string weaponName;
     [HideInInspector] public bool canShoot = true;
     [SerializeField] public float firerate;
     [SerializeField] public float damage;
@@ -17,6 +18,7 @@ public class BaseWeapon : MonoBehaviour, IShootable
     [HideInInspector] public List<string> damageTypesList = new List<string>();
     [HideInInspector] public CameraShake cam;
     [HideInInspector] public PlayerStats playerStats;
+    
     public virtual void Shot()
     {
         UpdateDamageTypes();

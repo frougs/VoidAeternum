@@ -86,7 +86,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -847331213, guid: dec1a71acf93e9946a754e275ef7512f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -218,8 +218,9 @@ MonoBehaviour:
   maxForce: 5
   pickupParticles: {fileID: 1949656326705013818, guid: f25a34e6ae5b81c4691f1987d428916c, type: 3}
   canDespawn: 1
-  despawnTime: 3
   delayBeforeDisappear: 5
+  shrinkDuration: 1
+  poofParticles: {fileID: 9016513514563187429, guid: 78e4df84dea46df40a9d0bc1e46f7ff6, type: 3}
   oreName: resonating
 --- !u!95 &7127844331288220941
 Animator:

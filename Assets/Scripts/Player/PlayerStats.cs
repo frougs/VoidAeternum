@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     public float playerFireRateMultiplier;
     public float playerProjectileSpeedMultiplier;
     public float playerWeaponRangeMultiplier;
+    public float expMultiplier;
     public DamageTypes.DamageType playerGlobalDamageTypes;
     public List<string> globalPlayerDamageTypesList = new List<string>();
     public UnityEvent<float, float, float> updatedHealth;

@@ -1,30 +1,13 @@
 using UnityEngine;
 
-public class EXPPickup : PickupBase
+public class EXPPickup : AttractionPickup
 {
-    private GameObject player;
+   
+    public float expValue;
 
-    [SerializeField] private float attractSpeed = 8f;
-    [SerializeField] private float acceleration = 20f;
-    private float curSpeed;
-
-    public override void Start()
+    public override void PickupBehavior(GameObject obj)
     {
-        base.Start();
-        player = PlayerSingleton.instance.gameObject;
-    }
-
-    private void FixedUpdate()
-    {
-        if(player == null ) return;
-        Vector3 toPlayer = player.transform.position - transform.position;
-
-        float distance = toPlayer.magnitude;
-
-        curSpeed = Mathf.MoveTowards(curSpeed, attractSpeed, acceleration * Time.fixedDeltaTime);
-
-        Vector3 direction = toPlayer.normalized;
-
-        transform.position += direction * curSpeed * Time.fixedDeltaTime;
+        base.PickupBehavior(obj);
+        player.GetComponent<ExpManager>().AddExp(expValue);
     }
 }

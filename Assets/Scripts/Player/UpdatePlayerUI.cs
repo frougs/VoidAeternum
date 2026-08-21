@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class UpdatePlayerUI : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class UpdatePlayerUI : MonoBehaviour
 
     [Header("Exp Stuff")]
     [SerializeField] RectTransform expBar;
+    [SerializeField] TextMeshProUGUI levelText;
+    [Header("Money Stuff")]
+    [SerializeField] TextMeshProUGUI moneyText;
 
     [Header("Fuel Stuff")]
     [SerializeField] RectTransform fuelBar;
@@ -58,5 +62,20 @@ public class UpdatePlayerUI : MonoBehaviour
     {
         float newFillAmount = (currentFuel / maxFuel) * maxBarWidth;
         fuelBar.sizeDelta = new Vector2(newFillAmount, fuelBar.sizeDelta.y);
+    }
+
+    public void UpdateExpUI(float currentExp, float expToLevelUp)
+    {
+        float newFillAmount = (currentExp / expToLevelUp) * maxBarWidth;
+        expBar.sizeDelta = new Vector2(newFillAmount, expBar.sizeDelta.y);
+    }
+
+    public void UpdateLevelUI(int level)
+    {
+        levelText.text = level.ToString();
+    }
+    public void UpdateMoneyUI(int money)
+    {
+        moneyText.text = "$" +money.ToString();
     }
 }
