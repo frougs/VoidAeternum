@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3503004730100791188}
+  - component: {fileID: 5395350463972922481}
   m_Layer: 3
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7182246013283167632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5395350463972922481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403099423884184729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e60a39eaba8fd41914905ab4c73bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSlot
 --- !u!1 &3726536395208317252
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,9 +154,6 @@ MonoBehaviour:
   weaponContainers: 1
   weaponSlots:
   - {fileID: 1403099423884184729}
-  updateWeaponSlots:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6876481861069426650
 GameObject:
   m_ObjectHideFlags: 0

@@ -108,6 +108,7 @@ MonoBehaviour:
   objID: rocket_launcher
   isPooled: 0
   weaponName: Rocket Launcher
+  slotReq: 1
   canShoot: 1
   firerate: 0.8
   damage: 100

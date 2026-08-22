@@ -108,6 +108,7 @@ MonoBehaviour:
   objID: basic_weapon
   isPooled: 0
   weaponName: SIMG
+  slotReq: 1
   canShoot: 1
   firerate: 0.2
   damage: 20

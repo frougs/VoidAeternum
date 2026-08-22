@@ -14,6 +14,10 @@ public class ShipVisualUpdater : MonoBehaviour
 
     public UnityEvent updatedShipVisuals;
 
+    [SerializeField] bool updateWeaponSlots = false;
+
+    [SerializeField] BaseWing[] wings;
+
     public void Start()
     {
         shipVisuals.Add("lWing", lWing);
@@ -63,5 +67,17 @@ public class ShipVisualUpdater : MonoBehaviour
         Transform parent = oldPart.transform.parent;
         GameObject replacedPart = Instantiate(newPart, position, rotation, parent);
         Destroy(oldPart);
+    }
+
+    public void Update()
+    {
+        if (updateWeaponSlots)
+        {
+            foreach(BaseWing wing in wings)
+            {
+                wing.Refresh();
+            }
+            updateWeaponSlots = false;
+        }
     }
 }

@@ -30,7 +30,7 @@ public class ObjectPooler : MonoBehaviour
 
     private void CreatePool(ObjectToPool obj)
     {
-        GameObject poolGO = new GameObject(obj.objectID + " Pool", typeof(Transform));
+        GameObject poolGO = new GameObject(obj.objectID + " Pool");
         poolGO.transform.SetParent(poolParent.transform, false);
         poolGO.AddComponent<ObjectID>().objID = obj.objectID;
 

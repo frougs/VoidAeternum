@@ -7,6 +7,7 @@ using System;
 public class BaseWeapon : ObjectID, IShootable
 {
     public string weaponName;
+    public int slotReq;
     [HideInInspector] public bool canShoot = true;
     [SerializeField] public float firerate;
     [SerializeField] public float damage;
