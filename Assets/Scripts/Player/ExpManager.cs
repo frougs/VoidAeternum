@@ -3,7 +3,7 @@ using UnityEngine.Events;
 public class ExpManager : MonoBehaviour
 {
     public UnityEvent<float, float> updatedExp;
-    public UnityEvent<int> leveledUp;
+    public UnityEvent<int, int> leveledUp;
     private float curExp;
     [SerializeField] private float expToNextLevel;
     public int curLevel= 0;
@@ -30,7 +30,7 @@ public void LevelUp()
     curLevel += 1;
     expToNextLevel *= levelMulti;   
     //Level Up Behavior
-    leveledUp.Invoke(curLevel);
+    leveledUp.Invoke(curLevel, this.GetComponent<PlayerStats>().numOfUpgradeChoices);
     CheckLevel();                   
 }
     private void Update()

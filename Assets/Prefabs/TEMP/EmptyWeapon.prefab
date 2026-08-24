@@ -113,9 +113,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   weapon: {fileID: 0}
+  hasWeapon: 0
   sprite: {fileID: 4798765829894661457}
   plusSign: {fileID: 4893562027764382576}
   weaponName: 
+  slotKey: {fileID: 0}
+  side: 
 --- !u!1 &992851795043999474
 GameObject:
   m_ObjectHideFlags: 0

@@ -429,9 +429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901f51863a9fc024c88a74919c45ccab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objID: mining_laser
+  objID: large_mining_laser
+  itemName: Large Mining Laser
+  location: Wings
+  equipable: wing
   isPooled: 0
-  weaponName: Mining Laser
   slotReq: 2
   canShoot: 1
   firerate: 0.05

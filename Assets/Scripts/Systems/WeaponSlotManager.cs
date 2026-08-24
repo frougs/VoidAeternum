@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class WeaponSlotManager : MonoBehaviour
 {
@@ -10,19 +11,26 @@ public class WeaponSlotManager : MonoBehaviour
     private Dictionary<GameObject, WeaponUISlot> leftHolders = new Dictionary<GameObject, WeaponUISlot>();
     private Dictionary<GameObject, WeaponUISlot> rightHolders = new Dictionary<GameObject, WeaponUISlot>();
 
+    private Action<GameObject, string, UpgradeHolder> onItemDropped;
+
+    public void RegisterDropCallback(Action<GameObject, string, UpgradeHolder> callback)
+    {
+        onItemDropped = callback;
+    }
+
     public void UpdateWeaponUI(int slots, Dictionary<GameObject, GameObject> weapons, string side)
     {
         if (side == "Left")
         {
-            CheckContainers(leftSide, leftHolders, weapons);
+            CheckContainers(leftSide, leftHolders, weapons, side);
         }
         if (side == "Right")
         {
-            CheckContainers(rightSide, rightHolders, weapons);
+            CheckContainers(rightSide, rightHolders, weapons, side);
         }
     }
 
-    private void CheckContainers(GameObject side, Dictionary<GameObject, WeaponUISlot> holders, Dictionary<GameObject, GameObject> weapons)
+    private void CheckContainers(GameObject sideContainer, Dictionary<GameObject, WeaponUISlot> holders, Dictionary<GameObject, GameObject> weapons, string side)
     {
         foreach (var kvp in weapons)
         {
@@ -33,30 +41,23 @@ public class WeaponSlotManager : MonoBehaviour
 
             if (weaponValue == null)
             {
-                // Slot is empty - if the old holder still shows a weapon, replace it with a fresh one
                 if (holder != null && holder.hasWeapon)
                 {
                     Destroy(holder.gameObject);
-                    GameObject freshHolder = Instantiate(emptyWeaponHolder, side.transform);
-                    holders[slotKey] = freshHolder.GetComponent<WeaponUISlot>();
+                    holder = CreateHolder(sideContainer, slotKey, side, holders);
                 }
                 else if (holder == null)
                 {
-                    GameObject newHolder = Instantiate(emptyWeaponHolder, side.transform);
-                    holders[slotKey] = newHolder.GetComponent<WeaponUISlot>();
+                    holder = CreateHolder(sideContainer, slotKey, side, holders);
                 }
-                // else: holder already exists and is already empty, leave it alone
             }
             else
             {
                 if (holder == null)
                 {
-                    GameObject newHolder = Instantiate(emptyWeaponHolder, side.transform);
-                    holder = newHolder.GetComponent<WeaponUISlot>();
-                    holders[slotKey] = holder;
+                    holder = CreateHolder(sideContainer, slotKey, side, holders);
                 }
 
-                // Don't overwrite a weapon that's already assigned to this holder
                 if (!holder.hasWeapon)
                 {
                     holder.weapon = weaponValue;
@@ -65,7 +66,6 @@ public class WeaponSlotManager : MonoBehaviour
             }
         }
 
-        // Remove holders whose slot no longer exists in the incoming dictionary at all
         List<GameObject> keysToRemove = new List<GameObject>();
         foreach (var slotKey in holders.Keys)
         {
@@ -80,5 +80,19 @@ public class WeaponSlotManager : MonoBehaviour
             Destroy(holders[slotKey].gameObject);
             holders.Remove(slotKey);
         }
+    }
+
+    private WeaponUISlot CreateHolder(GameObject sideContainer, GameObject slotKey, string side, Dictionary<GameObject, WeaponUISlot> holders)
+    {
+        GameObject newHolder = Instantiate(emptyWeaponHolder, sideContainer.transform);
+        WeaponUISlot slot = newHolder.GetComponent<WeaponUISlot>();
+        slot.Initialize(slotKey, side, HandleItemDropped);
+        holders[slotKey] = slot;
+        return slot;
+    }
+
+    private void HandleItemDropped(WeaponUISlot slot, UpgradeHolder droppedHolder)
+    {
+        onItemDropped?.Invoke(slot.slotKey, slot.side, droppedHolder);
     }
 }

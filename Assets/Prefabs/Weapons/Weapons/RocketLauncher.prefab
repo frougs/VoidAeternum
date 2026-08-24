@@ -106,8 +106,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objID: rocket_launcher
+  itemName: Rocket Launcher
+  location: Wings
+  equipable: wing
   isPooled: 0
-  weaponName: Rocket Launcher
   slotReq: 1
   canShoot: 1
   firerate: 0.8

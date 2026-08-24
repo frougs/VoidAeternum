@@ -6,7 +6,6 @@ using System;
 //[RequireComponent(typeof(DamageTypes))]
 public class BaseWeapon : ObjectID, IShootable
 {
-    public string weaponName;
     public int slotReq;
     [HideInInspector] public bool canShoot = true;
     [SerializeField] public float firerate;

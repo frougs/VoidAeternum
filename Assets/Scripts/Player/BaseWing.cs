@@ -10,10 +10,9 @@ public class BaseWing : MonoBehaviour
         Right
     }
     [SerializeField] private WingSide side;
-    public int weaponContainers;
-    //public HashSet<GameObject> weaponSlots = new HashSet<GameObject>();
+    public WingSide Side => side;
 
-    //public UnityEvent<int, GameObject[], string> updateWeaponSlots;
+    public int weaponContainers;
 
     private Dictionary<GameObject, GameObject> containers = new Dictionary<GameObject, GameObject>();
 
@@ -24,7 +23,6 @@ public class BaseWing : MonoBehaviour
 
     public void UpdateWeaponSlots()
     {
-        //updateWeaponSlots.Invoke(weaponContainers, weaponSlots, side.ToString());
         WeaponUISingleton.instance.GetComponent<WeaponSlotManager>().UpdateWeaponUI(weaponContainers, containers, side.ToString());
     }
 
@@ -32,7 +30,6 @@ public class BaseWing : MonoBehaviour
     {
         containers.Clear();
         var slots = this.GetComponentsInChildren<WeaponSlot>();
-        //Debug.Log("Checking detected slots on " + side.ToString() + " side: " + slots.Length);
 
         foreach (WeaponSlot slot in slots)
         {
@@ -40,16 +37,6 @@ public class BaseWing : MonoBehaviour
                 ? slot.gameObject.transform.GetChild(0).gameObject
                 : null;
 
-            if (!containers.ContainsKey(slot.gameObject))
-            {
-                //Debug.LogWarning("Key doesnt exist, adding...");
-            }
-            else
-            {
-                //Debug.LogWarning("Key already exists, updating weapon...");
-            }
-
-            // Indexer handles both insert and update, so this is always safe
             containers[slot.gameObject] = weapon;
         }
 

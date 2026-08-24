@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b20dbfefa14d7a4f8f6066a40431e02, type: 3}
+  m_Name: Basic LootPool
+  m_EditorClassIdentifier: Assembly-CSharp::LootPool
+  lootPoolName: Basic
+  lootable:
+  - objPrefab: {fileID: 3599469645980845513, guid: cc373aa79a3a6ac4ab63b361f3fa8b59, type: 3}
+    rarity: 0.25
+  - objPrefab: {fileID: 5572982564184035251, guid: a656f91dc1a5c2843b960453f38be750, type: 3}
+    rarity: 0.25
+  - objPrefab: {fileID: 5309328162516643745, guid: 8792a3a0c4f2afc43bc661774a936e16, type: 3}
+    rarity: 0.25
+  - objPrefab: {fileID: 3559970146670911666, guid: aaa446dd2816f7e449fb182ddc708a60, type: 3}
+    rarity: 0.25

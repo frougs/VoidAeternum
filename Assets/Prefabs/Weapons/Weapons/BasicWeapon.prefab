@@ -106,8 +106,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objID: basic_weapon
+  itemName: SIMG
+  location: Wings
+  equipable: wing
   isPooled: 0
-  weaponName: SIMG
   slotReq: 1
   canShoot: 1
   firerate: 0.2

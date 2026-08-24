@@ -70,7 +70,7 @@ public class UpdatePlayerUI : MonoBehaviour
         expBar.sizeDelta = new Vector2(newFillAmount, expBar.sizeDelta.y);
     }
 
-    public void UpdateLevelUI(int level)
+    public void UpdateLevelUI(int level, int ignore)
     {
         levelText.text = level.ToString();
     }

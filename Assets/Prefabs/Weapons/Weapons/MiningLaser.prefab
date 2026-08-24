@@ -232,8 +232,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objID: mining_laser
+  itemName: Mining Laser
+  location: Wings
+  equipable: wing
   isPooled: 0
-  weaponName: Mining Laser
   slotReq: 1
   canShoot: 1
   firerate: 0.05

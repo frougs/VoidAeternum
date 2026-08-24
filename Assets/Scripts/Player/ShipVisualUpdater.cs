@@ -60,6 +60,21 @@ public class ShipVisualUpdater : MonoBehaviour
         return shipVisuals;
     }
 
+    public BaseWing GetWing(BaseWing.WingSide side)
+    {
+        if (wings == null) return null;
+
+        foreach (BaseWing wing in wings)
+        {
+            if (wing != null && wing.Side == side)
+            {
+                return wing;
+            }
+        }
+
+        return null;
+    }
+
     private void ReplaceShipPart(GameObject newPart, GameObject oldPart)
     {
         Vector3 position = oldPart.transform.position;
